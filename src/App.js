@@ -1,8 +1,12 @@
-import "./App.css";
+import { container } from "./App.module.css";
 import Board from "./Components/Board/Board";
 
 function App() {
-  return <Board />;
+  return (
+    <div className={container}>
+      <Board />
+    </div>
+  );
 }
 
 export default App;

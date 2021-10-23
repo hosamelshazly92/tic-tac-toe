@@ -1,5 +1,5 @@
 import Square from "../Square/Square";
-import { container, row } from "./Board.module.css";
+import { container, row, section, btn, text } from "./Board.module.css";
 import { useState } from "react";
 
 const Board = () => {
@@ -48,8 +48,16 @@ const Board = () => {
     return false;
   };
 
+  const handleReset = () => {
+    setSquares(Array(9).fill(null));
+    setWinner("");
+  };
+
   return (
     <div className={container}>
+      <div className={text}>
+        <p>{winner}</p>
+      </div>
       <div className={row}>
         <Square number={squares[0]} handleClick={() => handleClick(0)} />
         <Square number={squares[1]} handleClick={() => handleClick(1)} />
@@ -65,7 +73,11 @@ const Board = () => {
         <Square number={squares[7]} handleClick={() => handleClick(7)} />
         <Square number={squares[8]} handleClick={() => handleClick(8)} />
       </div>
-      <div>{winner}</div>
+      <div className={section}>
+        <button className={btn} onClick={handleReset}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
